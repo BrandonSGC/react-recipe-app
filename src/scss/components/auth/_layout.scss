@@ -1,0 +1,32 @@
+@use "../../base/variables" as v;
+@use "../../base/mixins" as m;
+
+.auth {
+  height: 100vh;
+  display: grid;
+  width: 100%;
+  display: grid;
+
+  @include m.tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__bg {
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.860),
+        rgba(0, 0, 0, 0.860)
+      ),
+      url("/dark-pattern.jpg");
+    color: v.$white;
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

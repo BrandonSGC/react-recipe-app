@@ -1,0 +1,17 @@
+@use "../../base/mixins" as m;
+
+.logo {
+  display: flex;
+  flex-direction: column;
+
+  @include m.tablet {
+    flex-direction: row;
+    align-items: center;
+    font-size: 2.4rem;
+    gap: 1rem;
+  }
+
+  img {
+    width: 5rem;
+  }
+}

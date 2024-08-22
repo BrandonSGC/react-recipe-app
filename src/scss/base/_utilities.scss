@@ -1,0 +1,26 @@
+.legend {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.input {
+  padding: 0.8rem 1rem;
+  border: 1px solid gray;
+  border-radius: 0.5rem;
+
+  &::placeholder {
+    color: #868686;
+    font-weight: 300;
+  }
+}
+
+.button {
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+}

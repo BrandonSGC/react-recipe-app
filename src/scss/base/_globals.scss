@@ -1,0 +1,25 @@
+@use "./variables" as v;
+
+/* Globals */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Outfit", system-ui;
+}
+
+a {
+  color: v.$purple;
+  text-decoration: none;
+
+  &:hover {
+    color: v.$dark-purple;
+  }
+}
+
+hr {
+  display: block;
+  width: 100%;
+}
