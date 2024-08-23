@@ -7,9 +7,9 @@ export const Router = () => {
   return (
     <>
       <Routes>
-        <Route path="/auth/login" element={<Login />} />
-        <Route path="/auth/register" element={<Register />} />
-        <Route path="/*" element={<Register />} />
+        <Route path="/auth/signin" element={<Login />} />
+        <Route path="/auth/signup" element={<Register />} />
+        <Route path="/*" element={<Home />} />
       </Routes>
     </>
   );
