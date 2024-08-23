@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -5,27 +6,37 @@ import type { DraftUser } from "../../types";
 import { registerUser } from "../../api/authentication";
 
 export const RegisterForm = () => {
+  const [error, setError] = useState("");
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValidating },
     reset,
   } = useForm<DraftUser>();
   const navigate = useNavigate();
 
   const onSubmit = handleSubmit(async (data: DraftUser) => {
-    await registerUser(data);
+    const response = await registerUser(data);
+    if (!response.success) {
+      setError(response.message);
+      return;
+    }
     reset();
-    navigate("/auth/login");
+    navigate("/auth/signin");
     toast.success("User created successfully");
   });
+
+  // Effect that disappears the "Invalid credentials when typing the password again".
+  useEffect(() => {
+    isValidating && setError("");
+  }, [isValidating]);
 
   return (
     <div className="register">
       <div className="register__info">
         <h2 className="legend">Create account</h2>
         <p>
-          Already have an account? <Link to="/auth/login">Login</Link>
+          Already have an account? <Link to="/auth/signin">Login</Link>
         </p>
       </div>
 
@@ -88,10 +99,18 @@ export const RegisterForm = () => {
           {errors.password && (
             <p className="error">{errors.password.message}</p>
           )}
+          {errors.terms && <p className="error">{errors.terms.message}</p>}
+          {error && <p className="error">{error}</p>}
         </div>
 
         <div className="form__terms">
-          <input type="checkbox" id="terms" name="terms" />
+          <input
+            type="checkbox"
+            id="terms"
+            {...register("terms", {
+              required: "You must accept the terms of service.",
+            })}
+          />
           <p>
             I agree to Recipe App <a href="#">Terms of service</a> and{" "}
             <a href="#">Privacy policy</a>{" "}
