@@ -1,0 +1,21 @@
+@use "../../base/variables" as v;
+@use "../../base/mixins" as m;
+
+.login {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 80%;
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    button {
+      border: 1px solid v.$purple;
+      background-color: v.$white;
+    }
+  }
+}
