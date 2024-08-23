@@ -17,6 +17,8 @@
         rgba(0, 0, 0, 0.860)
       ),
       url("/dark-pattern.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     color: v.$white;
     padding: 5rem;
     display: flex;
